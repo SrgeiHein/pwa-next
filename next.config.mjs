@@ -10,16 +10,11 @@ const nextConfig = {
 
 const nextConfigFunction = async (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
-    const withPWA = (await import("@ducanh2912/next-pwa")).default({
+    const withPWA = (await import("next-pwa")).default({
       dest: "public",
       cacheOnFrontEndNav: true,
-      aggressiveFrontEndNavCaching: true,
       reloadOnOnline: true,
-      swMinify: true,
       disable: false,
-      workboxOptions: {
-        disableDevLogs: true,
-      },
     });
     return withPWA(nextConfig);
   }
