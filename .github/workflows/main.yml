@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -18,22 +17,19 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-       filters: |
-        
-    - name: Setup Frontend Lock File Path
-     =
-      uses: actions/setup-node@v3
-      with:
-       node-version: ${{ matrix.node-version }}
-       cache: 'yarn'
-       cache-dependency-path: yarn.lock
-    - name: Configure Frontend Dependencies
-      run:  yarn install && yarn build && pm2 restart pwa-next 
-       
-      
-   
-      
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+
+      - name: Setup Frontend Lock File Path
+
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
+      - name: Configure Frontend Dependencies
+
+        run: yarn install && yarn build && pm2 restart pwa-next
