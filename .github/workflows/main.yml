@@ -27,5 +27,4 @@ jobs:
           cache: "yarn"
           cache-dependency-path: yarn.lock
       - name: Configure Frontend Dependencies
-
         run: yarn install && yarn build && pm2 restart pwa-next
